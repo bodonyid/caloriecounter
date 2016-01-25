@@ -1,0 +1,22 @@
+{
+  "name": "caloriecounter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bodonyid/caloriecounter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bodonyid/caloriecounter/issues"
+  },
+  "homepage": "https://github.com/bodonyid/caloriecounter#readme",
+  "dependencies": {
+    "mysql": "^2.10.2"
+  }
+}
