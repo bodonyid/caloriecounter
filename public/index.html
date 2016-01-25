@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
     <title>Calor II</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,900|Merriweather:700italic,700,400italic,400" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>CalorieCounter</h1>
-    <form class="add-meal-form">
-      <input type="text" class="meal-input" value="What did you eat just now?">
-      <input type="number" class="calorie-input" value="0">
-      <input type="datetime-local" class="date-input" value="">
-      <input type="button" class="add-meal-button" value="Add Meal">
-    </form>
+    <main>
+      <form class="add-meal-form">
+        <div class="data-input-div">
+          <p>Your Meal</p>
+          <input type="text" class="meal-input" value="What did you eat just now?">
+        </div>
+        <div class="data-input-div">
+          <p>Number of Calories</p>
+          <input type="number" class="calorie-input" value="0">
+        </div>
+        <div class="data-input-div">
+          <p>Date and Time</p>
+          <input type="datetime-local" class="date-input" value="">
+        </div>
+        <input type="button" class="add-meal-button" value="Eat More">
+      </form>
+    </main>
     <script src="index.js"></script>
   </body>
 </html>

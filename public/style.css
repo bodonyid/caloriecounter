@@ -1,0 +1,28 @@
+h1 {
+  font-family: Merriweather;
+}
+
+main {
+  font-family: Lato;
+}
+
+p {
+  min-width: 200px;
+}
+
+.data-input-div {
+  align-items: center;
+  display: flex;
+  font-weight: 300;
+  max-height: 30px;
+}
+
+.meal-input, .calorie-input, .date-input, .add-meal-button {
+  font-family: Lato;
+  display: block;
+  margin: 20px 0px 20px;
+}
+
+.meal-input, .calorie-input, .date-input {
+  min-width: 200px;
+}
