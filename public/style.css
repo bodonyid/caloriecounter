@@ -17,7 +17,7 @@ p {
   max-height: 30px;
 }
 
-.meal-input, .calorie-input, .date-input, .add-meal-button {
+.meal-input, .calorie-input, .date-input, .add-meal-button, .list-meals-button {
   font-family: Lato;
   display: block;
   margin: 20px 0px 20px;
@@ -25,4 +25,22 @@ p {
 
 .meal-input, .calorie-input, .date-input {
   min-width: 200px;
+}
+
+.add-meal-button, .list-meals-button {
+  min-width: 80px;
+}
+
+.meal-history {
+  display: flex;
+  flex-direction: row;
+}
+
+.meal-list-name, .meal-list-calories, .meal-list-date {
+  font-weight: bold;
+  min-width: 200px;
+}
+
+.meal-list-item-name, .meal-list-item-calories, .meal-list-item-date {
+  font-weight: normal;
 }
