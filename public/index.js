@@ -62,7 +62,7 @@ var listMeals = function(response) {
     mealListCaloriesColumn.appendChild(newMealItemCalories);
     var newMealItemDate = document.createElement('div');
     newMealItemDate.classList.add('meal-list-item-date');
-    newMealItemDate.innerText = meal.date;
+    newMealItemDate.innerText = meal.date.substring(0, 10) + " " + meal.date.substring(11, 16);
     mealListDateColumn.appendChild(newMealItemDate);
   });
 }
