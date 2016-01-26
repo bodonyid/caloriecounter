@@ -27,8 +27,24 @@ p {
   min-width: 200px;
 }
 
+.buttons-pane {
+  display: flex;
+  flex-direction: horizontal;
+}
+
 .add-meal-button, .list-meals-button {
+  background-color: #FEE202;
+  border-color: #FBCB15;
+  border-radius: 6px;
+  border-width: 0.5px;
+  color: #262C3A;
+  margin-right: 40px;
+  min-height: 30px;
   min-width: 80px;
+}
+
+.add-meal-button:focus, .list-meals-button:focus {
+  outline: none;
 }
 
 .meal-history {
@@ -37,10 +53,14 @@ p {
 }
 
 .meal-list-name, .meal-list-calories, .meal-list-date {
+  background-color: #262C3A;
+  color: #fff;
   font-weight: bold;
   min-width: 200px;
 }
 
 .meal-list-item-name, .meal-list-item-calories, .meal-list-item-date {
+  background-color: #fff;
+  color: #262C3A;
   font-weight: normal;
 }

@@ -9,6 +9,7 @@ var listMealsButton = document.querySelector('.list-meals-button');
 var mealListNameColumn = document.querySelector('.meal-list-name');
 var mealListCaloriesColumn = document.querySelector('.meal-list-calories');
 var mealListDateColumn = document.querySelector('.meal-list-date');
+var mealListIsDisplayed = false;
 
 function createRequest(method, url, data, callback) {
   var newRequest = new XMLHttpRequest();
@@ -49,6 +50,7 @@ var listMeals = function(response) {
   mealListNameColumn.innerText = 'Meal';
   mealListCaloriesColumn.innerText = 'Calories';
   mealListDateColumn.innerText = 'Date';
+  mealListIsDisplayed = true;
   meals.forEach(function(meal) {
     var newMealItemName = document.createElement('div');
     newMealItemName.classList.add('meal-list-item-name');
@@ -65,6 +67,11 @@ var listMeals = function(response) {
   });
 }
 
-addMealButton.addEventListener('click', createPostRequest);
+addMealButton.addEventListener('click', function() {
+  createPostRequest();
+  if (mealListIsDisplayed === true) {
+    createGetAllRequest();
+  }
+});
 
 listMealsButton.addEventListener('click', createGetAllRequest);
