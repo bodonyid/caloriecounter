@@ -1,9 +1,18 @@
+body {
+  margin: 0px;
+}
+
 h1 {
+  background-color: #262C3A;
+  color: #fff;
   font-family: Merriweather;
+  margin: 0px 0px 20px;
+  padding-left: 10px;
 }
 
 main {
   font-family: Lato;
+  margin: 10px;
 }
 
 p {

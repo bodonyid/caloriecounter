@@ -15,7 +15,7 @@ app.listen(3000);
 app.post('/meals', function (req, res) {
   meal.add(req.body, function(err, result) {
   	res.json({
-    	status: 'ok'
+    	status: 'Ok'
   	});
   });
 });
@@ -23,5 +23,15 @@ app.post('/meals', function (req, res) {
 app.get('/meals', function (req, res) {
   meal.getAll(function(err, meals) {
     res.json(meals);
+  });
+});
+
+app.delete('/meals/:id', function (req, res) {
+  meal.del(req.params.id, function(err, result) {
+    if (err) {
+      res.json({status: 'Does not exist'});
+    } else {
+      res.json({status: 'Ok'});
+    }
   });
 });
