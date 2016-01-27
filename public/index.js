@@ -32,8 +32,10 @@ function createRequest(method, url, data, callback) {
 }
 
 function clearInputValues() {
-  mealInputBox.value = 'What did you eat just now?';
-  calorieInputBox.value = 0;
+  mealInputBox.value = '';
+  mealInputBox.placeholder = 'What did you eat just now?';
+  calorieInputBox.value = '';
+  calorieInputBox.placeholder = 0;
   dateInputBox.value = 'YYYY-MM-DDThh:mm';
 }
 

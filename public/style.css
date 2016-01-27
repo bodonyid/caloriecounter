@@ -27,6 +27,7 @@ p {
 }
 
 .meal-input, .calorie-input, .date-input, .filter-input, .add-meal-button, .list-meals-button, .filter-meals-button {
+  color: #999;
   font-family: Lato;
   display: block;
   margin: 20px 0px 20px;
@@ -34,6 +35,11 @@ p {
 
 .meal-input, .calorie-input, .date-input, .filter-input {
   min-width: 200px;
+}
+
+.meal-input:focus, .calorie-input:focus, .date-input:focus, .filter-input:focus {
+  color: black;
+  outline: none;
 }
 
 .buttons-pane {
@@ -47,7 +53,7 @@ p {
   border-radius: 6px;
   border-width: 0.5px;
   color: #262C3A;
-  margin-right: 40px;
+  margin-right: 120px;
   min-height: 30px;
   min-width: 80px;
 }
