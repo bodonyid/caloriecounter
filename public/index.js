@@ -1,17 +1,22 @@
 'use strict';
 
 var url = 'http://localhost:3000/meals';
+
 var mealInputBox = document.querySelector('.meal-input');
 var calorieInputBox = document.querySelector('.calorie-input');
 var dateInputBox = document.querySelector('.date-input');
 var filterInputBox = document.querySelector('.filter-input');
+
 var addMealButton = document.querySelector('.add-meal-button');
 var listMealsButton = document.querySelector('.list-meals-button');
 var filterMealsButton = document.querySelector('.filter-meals-button');
+
 var mealListNameColumn = document.querySelector('.meal-list-name');
 var mealListCaloriesColumn = document.querySelector('.meal-list-calories');
 var mealListDateColumn = document.querySelector('.meal-list-date');
 var deleteButtonsDiv = document.querySelector('.delete-buttons');
+
+var mealListIsFiltered = false;
 var mealListIsDisplayed = false;
 
 function createRequest(method, url, data, callback) {
@@ -26,15 +31,20 @@ function createRequest(method, url, data, callback) {
   };
 }
 
-function defaultInput() {
+function clearInputValues() {
   mealInputBox.value = 'What did you eat just now?';
   calorieInputBox.value = 0;
   dateInputBox.value = 'YYYY-MM-DDThh:mm';
-  filterInputBox.value = 'YYYY-MM-DD';
+}
+
+function clearDeleteButtons() {
+  while (deleteButtonsDiv.firstChild) {
+    deleteButtonsDiv.removeChild(deleteButtonsDiv.firstChild);
+  }
 }
 
 var refresh = function() {
-  createRequest('GET', url, {}, defaultInput);
+  createRequest('GET', url, {}, clearInputValues);
 }
 
 function createPostRequest() {
@@ -42,14 +52,29 @@ function createPostRequest() {
   var calorieInput = calorieInputBox.value;
   var dateInput = dateInputBox.value;
   var newMeal = JSON.stringify({name: mealInput, calories: calorieInput, date: dateInput});
+  clearDeleteButtons();
   createRequest('POST', url, newMeal, refresh);
 }
 
 function createGetAllRequest() {
-  while (deleteButtonsDiv.firstChild) {
-    deleteButtonsDiv.removeChild(deleteButtonsDiv.firstChild);
-  }
+  clearDeleteButtons();
   createRequest('GET', url, {}, listMeals);
+}
+
+function createFilterRequest() {
+  clearDeleteButtons();
+  var date = filterInputBox.value;
+  var dateString = JSON.stringify({date: date});
+  var dateUrl = url + '/filter/' + date;
+  createRequest('GET', dateUrl, dateString, listMeals);
+}
+
+function createDeleteRequest() {
+  if (event.target.classList.contains('delete-me-button')) {
+    var mealUrl = url + '/' + event.target.id;
+    var deletedMeal = JSON.stringify({id: event.target.id});
+    createRequest('DELETE', mealUrl, deletedMeal, refresh);
+  }
 }
 
 var listMeals = function(response) {
@@ -81,28 +106,29 @@ var listMeals = function(response) {
 
 addMealButton.addEventListener('click', function() {
   createPostRequest();
-  if (mealListIsDisplayed === true) {
+  if (mealListIsFiltered === true) {
+    createFilterRequest();
+  } else if (mealListIsDisplayed === true) {
     createGetAllRequest();
   }
 });
 
-listMealsButton.addEventListener('click', createGetAllRequest);
+listMealsButton.addEventListener('click', function(event) {
+  mealListIsFiltered = false;
+  filterInputBox.value = 'YYYY-MM-DD';
+  createGetAllRequest();
+});
 
 deleteButtonsDiv.addEventListener('click', function(event) {
-  if (event.target.classList.contains('delete-me-button')) {
-    var mealUrl = url + '/' + event.target.id;
-    var deletedMeal = JSON.stringify({id: event.target.id});
-    createRequest('DELETE', mealUrl, deletedMeal, refresh);
+  createDeleteRequest();
+  if (mealListIsFiltered === true) {
+    createFilterRequest();
+  } else if (mealListIsDisplayed === true) {
     createGetAllRequest();
   }
 });
 
 filterMealsButton.addEventListener('click', function(event) {
-  var date = filterInputBox.value;
-  var dateString = JSON.stringify({date: date});
-  var dateUrl = url + '/filter/' + date;
-  createRequest('GET', dateUrl, dateString, listMeals);
-  while (deleteButtonsDiv.firstChild) {
-    deleteButtonsDiv.removeChild(deleteButtonsDiv.firstChild);
-  }
+  mealListIsFiltered = true;
+  createFilterRequest();
 });
