@@ -26,13 +26,13 @@ p {
   max-height: 30px;
 }
 
-.meal-input, .calorie-input, .date-input, .add-meal-button, .list-meals-button {
+.meal-input, .calorie-input, .date-input, .filter-input, .add-meal-button, .list-meals-button, .filter-meals-button {
   font-family: Lato;
   display: block;
   margin: 20px 0px 20px;
 }
 
-.meal-input, .calorie-input, .date-input {
+.meal-input, .calorie-input, .date-input, .filter-input {
   min-width: 200px;
 }
 
@@ -41,7 +41,7 @@ p {
   flex-direction: horizontal;
 }
 
-.add-meal-button, .list-meals-button {
+.add-meal-button, .list-meals-button, .filter-meals-button {
   background-color: #FEE202;
   border-color: #FBCB15;
   border-radius: 6px;
@@ -52,7 +52,7 @@ p {
   min-width: 80px;
 }
 
-.add-meal-button:focus, .list-meals-button:focus {
+.add-meal-button:focus, .list-meals-button:focus, .filter-meals-button:focus {
   outline: none;
 }
 
@@ -62,8 +62,7 @@ p {
 }
 
 .meal-list-name, .meal-list-calories, .meal-list-date {
-  background-color: #262C3A;
-  color: #fff;
+  color: #262C3A;
   font-weight: bold;
   min-width: 200px;
 }
@@ -89,4 +88,8 @@ p {
   font-family: Lato;
   margin: 0.5px;
   max-height: 18px;
+}
+
+.delete-me-button:focus {
+  outline: none;
 }

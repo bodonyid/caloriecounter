@@ -18,6 +18,10 @@ function getAll(cb) {
   connection.query('SELECT * FROM meal', cb);
 }
 
+function filterByDate(date, cb) {
+  connection.query('SELECT * FROM meal WHERE LEFT(date,10) = ?', date, cb);
+}
+
 function del(id, cb) {
   connection.query('DELETE FROM meal WHERE id = ?', id, cb);
 }
@@ -25,5 +29,6 @@ function del(id, cb) {
 module.exports = {
   add: add,
   getAll: getAll,
+  filter: filterByDate,
   del: del
 };

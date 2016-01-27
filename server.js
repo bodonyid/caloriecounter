@@ -26,6 +26,13 @@ app.get('/meals', function (req, res) {
   });
 });
 
+app.get('/meals/filter/:date', function (req, res) {
+  meal.filter(req.params.date, function(err, meals) {
+    res.json(meals);
+  });
+});
+
+
 app.delete('/meals/:id', function (req, res) {
   meal.del(req.params.id, function(err, result) {
     if (err) {

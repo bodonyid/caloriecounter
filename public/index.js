@@ -4,8 +4,10 @@ var url = 'http://localhost:3000/meals';
 var mealInputBox = document.querySelector('.meal-input');
 var calorieInputBox = document.querySelector('.calorie-input');
 var dateInputBox = document.querySelector('.date-input');
+var filterInputBox = document.querySelector('.filter-input');
 var addMealButton = document.querySelector('.add-meal-button');
 var listMealsButton = document.querySelector('.list-meals-button');
+var filterMealsButton = document.querySelector('.filter-meals-button');
 var mealListNameColumn = document.querySelector('.meal-list-name');
 var mealListCaloriesColumn = document.querySelector('.meal-list-calories');
 var mealListDateColumn = document.querySelector('.meal-list-date');
@@ -28,6 +30,7 @@ function defaultInput() {
   mealInputBox.value = 'What did you eat just now?';
   calorieInputBox.value = 0;
   dateInputBox.value = 'YYYY-MM-DDThh:mm';
+  filterInputBox.value = 'YYYY-MM-DD';
 }
 
 var refresh = function() {
@@ -71,7 +74,7 @@ var listMeals = function(response) {
     var newDeleteButton = document.createElement('button');
     newDeleteButton.classList.add('delete-me-button');
     newDeleteButton.setAttribute('id', meal.id);
-    newDeleteButton.innerText = 'Pretend you never ate this';
+    newDeleteButton.innerText = 'Pretend you didn\'t eat this';
     deleteButtonsDiv.appendChild(newDeleteButton);
   });
 }
@@ -91,5 +94,15 @@ deleteButtonsDiv.addEventListener('click', function(event) {
     var deletedMeal = JSON.stringify({id: event.target.id});
     createRequest('DELETE', mealUrl, deletedMeal, refresh);
     createGetAllRequest();
+  }
+});
+
+filterMealsButton.addEventListener('click', function(event) {
+  var date = filterInputBox.value;
+  var dateString = JSON.stringify({date: date});
+  var dateUrl = url + '/filter/' + date;
+  createRequest('GET', dateUrl, dateString, listMeals);
+  while (deleteButtonsDiv.firstChild) {
+    deleteButtonsDiv.removeChild(deleteButtonsDiv.firstChild);
   }
 });
