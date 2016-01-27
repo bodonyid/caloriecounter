@@ -73,3 +73,20 @@ p {
   color: #262C3A;
   font-weight: normal;
 }
+
+.delete-buttons {
+  display: flex;
+  flex-direction: column;
+  padding-top: 19px;
+}
+
+.delete-me-button {
+  background-color: #FEE202;
+  border-color: #FBCB15;
+  border-radius: 6px;
+  border-width: 0.5px;
+  color: #262C3A;
+  font-family: Lato;
+  margin: 0.5px;
+  max-height: 18px;
+}

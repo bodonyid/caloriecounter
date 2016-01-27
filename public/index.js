@@ -9,6 +9,7 @@ var listMealsButton = document.querySelector('.list-meals-button');
 var mealListNameColumn = document.querySelector('.meal-list-name');
 var mealListCaloriesColumn = document.querySelector('.meal-list-calories');
 var mealListDateColumn = document.querySelector('.meal-list-date');
+var deleteButtonsDiv = document.querySelector('.delete-buttons');
 var mealListIsDisplayed = false;
 
 function createRequest(method, url, data, callback) {
@@ -42,6 +43,9 @@ function createPostRequest() {
 }
 
 function createGetAllRequest() {
+  while (deleteButtonsDiv.firstChild) {
+    deleteButtonsDiv.removeChild(deleteButtonsDiv.firstChild);
+  }
   createRequest('GET', url, {}, listMeals);
 }
 
@@ -64,6 +68,11 @@ var listMeals = function(response) {
     newMealItemDate.classList.add('meal-list-item-date');
     newMealItemDate.innerText = meal.date.substring(0, 10) + " " + meal.date.substring(11, 16);
     mealListDateColumn.appendChild(newMealItemDate);
+    var newDeleteButton = document.createElement('button');
+    newDeleteButton.classList.add('delete-me-button');
+    newDeleteButton.setAttribute('id', meal.id);
+    newDeleteButton.innerText = 'Pretend you never ate this';
+    deleteButtonsDiv.appendChild(newDeleteButton);
   });
 }
 
@@ -75,3 +84,12 @@ addMealButton.addEventListener('click', function() {
 });
 
 listMealsButton.addEventListener('click', createGetAllRequest);
+
+deleteButtonsDiv.addEventListener('click', function(event) {
+  if (event.target.classList.contains('delete-me-button')) {
+    var mealUrl = url + '/' + event.target.id;
+    var deletedMeal = JSON.stringify({id: event.target.id});
+    createRequest('DELETE', mealUrl, deletedMeal, refresh);
+    createGetAllRequest();
+  }
+});
