@@ -1,62 +1,89 @@
 body {
+  background-image: url(/img/lemon-tart-dark.png);
+  background-size: cover;
   margin: 0px;
 }
 
 h1 {
-  background-color: #262C3A;
   color: #fff;
   font-family: Merriweather;
-  margin: 0px 0px 20px;
   padding: 10px;
+  margin: 0px auto;
+  text-align: center;
+  width: 300px;
 }
 
 main {
+  background-color: rgba(0, 0, 0, 0.2);
   font-family: Lato;
-  margin: 10px;
+  margin: 0px auto;
+  padding-top: 20px;
+  width: 550px;
 }
 
 p {
-  min-width: 200px;
+  min-width: 240px;
 }
 
 .data-input-div {
   align-items: center;
+  color: #fff;
   display: flex;
+  font-size: 16px;
   font-weight: 300;
-  max-height: 30px;
+  height: 40px;
+  margin: 0 auto;
+  width: 480px;
 }
 
 .meal-input, .calorie-input, .date-input, .filter-input, .add-meal-button, .list-meals-button, .filter-meals-button {
-  color: #999;
+  color: #292929;
   font-family: Lato;
+  font-size: 16px;
   display: block;
+  font-weight: 300;
   margin: 20px 0px 20px;
 }
 
+::-webkit-input-placeholder {
+  color: #292929;
+}
+
 .meal-input, .calorie-input, .date-input, .filter-input {
-  min-width: 200px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  min-width: 235px;
+  padding-left: 5px;
 }
 
 .meal-input:focus, .calorie-input:focus, .date-input:focus, .filter-input:focus {
-  color: black;
+  color: #fff;
   outline: none;
 }
 
 .buttons-pane {
   display: flex;
   flex-direction: horizontal;
+  margin: 0px 5px;
+  width: 540px;
 }
 
 .add-meal-button, .list-meals-button, .filter-meals-button {
-  background-color: #FEE202;
-  border-color: #FBCB15;
-  border-radius: 6px;
-  border-width: 0.5px;
-  color: #262C3A;
-  margin-right: 120px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #eec734;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px auto;
   min-height: 30px;
-  min-width: 80px;
+  width: 120px;
 }
+
+.add-meal-button:hover, .list-meals-button:hover, .filter-meals-button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
 
 .add-meal-button:focus, .list-meals-button:focus, .filter-meals-button:focus {
   outline: none;
@@ -65,35 +92,48 @@ p {
 .meal-history {
   display: flex;
   flex-direction: row;
+  margin: 0 auto;
+  width: 490px;
 }
 
 .meal-list-name, .meal-list-calories, .meal-list-date {
-  color: #262C3A;
+  color: #fff;
   font-weight: bold;
-  min-width: 200px;
+}
+
+.meal-list-name, .meal-list-calories {
+  width: 105px;
+}
+
+.meal-list-date {
+  width: 140px;
 }
 
 .meal-list-item-name, .meal-list-item-calories, .meal-list-item-date {
-  background-color: #fff;
-  color: #262C3A;
-  font-weight: normal;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  height: 16px;
+  padding: 6px 0px;
 }
 
 .delete-buttons {
   display: flex;
   flex-direction: column;
   padding-top: 19px;
+  width: 140px;
 }
 
 .delete-me-button {
-  background-color: #FEE202;
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: #FBCB15;
-  border-radius: 6px;
   border-width: 0.5px;
-  color: #262C3A;
+  color: #eec734;
   font-family: Lato;
+  font-size: 14px;
+  font-weight: 300;
+  height: 27px;
   margin: 0.5px;
-  max-height: 18px;
 }
 
 .delete-me-button:focus {

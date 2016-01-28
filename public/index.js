@@ -101,7 +101,7 @@ var listMeals = function(response) {
     var newDeleteButton = document.createElement('button');
     newDeleteButton.classList.add('delete-me-button');
     newDeleteButton.setAttribute('id', meal.id);
-    newDeleteButton.innerText = 'Pretend you didn\'t eat this';
+    newDeleteButton.innerText = 'Pretend you didn\'t';
     deleteButtonsDiv.appendChild(newDeleteButton);
   });
 }
