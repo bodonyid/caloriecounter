@@ -79,6 +79,22 @@ function createDeleteRequest() {
   }
 }
 
+function buildTableCell(newCell, newElement, className, value, parent) {
+  newCell = document.createElement(newElement);
+  newCell.classList.add(className);
+  newCell.innerText = value;
+  parent.appendChild(newCell);
+}
+
+function buildTableRow(meal) {
+  var newMealItemName;
+  buildTableCell(newMealItemName, 'div', 'meal-list-item-name', meal.name, mealListNameColumn);
+  var newMealItemCalories;
+  buildTableCell(newMealItemCalories, 'div', 'meal-list-item-calories', meal.calories, mealListCaloriesColumn);
+  var newMealItemDate;
+  buildTableCell(newMealItemDate, 'div', 'meal-list-item-date', meal.date.substring(0, 10) + " " + meal.date.substring(11, 16), mealListDateColumn);
+}
+
 var listMeals = function(response) {
   var meals = JSON.parse(response);
   mealListNameColumn.innerText = 'Meal';
@@ -87,18 +103,7 @@ var listMeals = function(response) {
   mealListIsDisplayed = true;
   var sumOfCalories = 0;
   meals.forEach(function(meal) {
-    var newMealItemName = document.createElement('div');
-    newMealItemName.classList.add('meal-list-item-name');
-    newMealItemName.innerText = meal.name;
-    mealListNameColumn.appendChild(newMealItemName);
-    var newMealItemCalories = document.createElement('div');
-    newMealItemCalories.classList.add('meal-list-item-calories');
-    newMealItemCalories.innerText = meal.calories;
-    mealListCaloriesColumn.appendChild(newMealItemCalories);
-    var newMealItemDate = document.createElement('div');
-    newMealItemDate.classList.add('meal-list-item-date');
-    newMealItemDate.innerText = meal.date.substring(0, 10) + " " + meal.date.substring(11, 16);
-    mealListDateColumn.appendChild(newMealItemDate);
+    buildTableRow(meal);
     var newDeleteButton = document.createElement('button');
     newDeleteButton.classList.add('delete-me-button');
     newDeleteButton.setAttribute('id', meal.id);
@@ -116,13 +121,17 @@ var listMeals = function(response) {
   mealListCaloriesColumn.appendChild(sumLineNumber);
 }
 
-addMealButton.addEventListener('click', function() {
-  createPostRequest();
+function checkMealListStatus() {
   if (mealListIsFiltered === true) {
     createFilterRequest();
   } else if (mealListIsDisplayed === true) {
     createGetAllRequest();
   }
+}
+
+addMealButton.addEventListener('click', function() {
+  createPostRequest();
+  checkMealListStatus();
 });
 
 listMealsButton.addEventListener('click', function(event) {
@@ -133,11 +142,7 @@ listMealsButton.addEventListener('click', function(event) {
 
 deleteButtonsDiv.addEventListener('click', function(event) {
   createDeleteRequest();
-  if (mealListIsFiltered === true) {
-    createFilterRequest();
-  } else if (mealListIsDisplayed === true) {
-    createGetAllRequest();
-  }
+  checkMealListStatus();
 });
 
 filterMealsButton.addEventListener('click', function(event) {

@@ -49,6 +49,15 @@ p {
   color: #292929;
 }
 
+::-webkit-inner-spin-button {
+  display: none;
+}
+
+::-webkit-calendar-picker-indicator {
+  background: none;
+  color: #eec734;
+}
+
 .meal-input, .calorie-input, .date-input, .filter-input {
   background-color: rgba(0, 0, 0, 0.1);
   border: none;
