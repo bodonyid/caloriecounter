@@ -74,7 +74,7 @@ p {
   color: #eec734;
   font-size: 16px;
   font-weight: bold;
-  margin: 20px auto;
+  margin: 10px auto 20px;
   min-height: 30px;
   width: 120px;
 }
@@ -92,8 +92,8 @@ p {
 .meal-history {
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
-  width: 490px;
+  margin: 0px auto;
+  width: 480px;
 }
 
 .meal-list-name, .meal-list-calories, .meal-list-date {
@@ -102,7 +102,7 @@ p {
 }
 
 .meal-list-name, .meal-list-calories {
-  width: 105px;
+  width: 100px;
 }
 
 .meal-list-date {
@@ -125,17 +125,26 @@ p {
 }
 
 .delete-me-button {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-color: #FBCB15;
-  border-width: 0.5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
   color: #eec734;
   font-family: Lato;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: bold;
   height: 27px;
   margin: 0.5px;
 }
 
+.delete-me-button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
 .delete-me-button:focus {
   outline: none;
+}
+
+.sum-text, .sum-number {
+  margin-bottom: 30px;
+  margin-top: 10px;
 }

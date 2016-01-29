@@ -85,6 +85,7 @@ var listMeals = function(response) {
   mealListCaloriesColumn.innerText = 'Calories';
   mealListDateColumn.innerText = 'Date';
   mealListIsDisplayed = true;
+  var sumOfCalories = 0;
   meals.forEach(function(meal) {
     var newMealItemName = document.createElement('div');
     newMealItemName.classList.add('meal-list-item-name');
@@ -103,7 +104,16 @@ var listMeals = function(response) {
     newDeleteButton.setAttribute('id', meal.id);
     newDeleteButton.innerText = 'Pretend you didn\'t';
     deleteButtonsDiv.appendChild(newDeleteButton);
+    sumOfCalories += meal.calories;
   });
+  var sumLineText = document.createElement('div');
+  sumLineText.classList.add('sum-text');
+  sumLineText.innerText = 'Total';
+  mealListNameColumn.appendChild(sumLineText);
+  var sumLineNumber = document.createElement('div');
+  sumLineNumber.classList.add('sum-number');
+  sumLineNumber.innerText = sumOfCalories;
+  mealListCaloriesColumn.appendChild(sumLineNumber);
 }
 
 addMealButton.addEventListener('click', function() {
